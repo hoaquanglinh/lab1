@@ -14,6 +14,7 @@ import com.example.baitap.dao.DAO;
 import com.example.baitap.model.loaisach;
 import com.example.baitap.model.phieumuon;
 import com.example.baitap.model.sach;
+import com.example.baitap.model.thanhvien;
 
 import java.util.ArrayList;
 
@@ -47,9 +48,27 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
             loaisach loaiSach = this.findLoaiSachByMaLoai(maLoai);
 
             if (loaiSach != null) {
-                holder.tenloai.setText(loaiSach.getTenloai());
+                holder.maloaifkpm.setText(loaiSach.getTenloai());
             } else {
-                holder.tenloai.setText("");
+                holder.maloaifkpm.setText("");
+            }
+
+            int maSach = list.get(position).getTensach();
+            sach sach = this.findSachByMaSach(maSach);
+
+            if (sach != null) {
+                holder.masachfkpm.setText(sach.getTensach());
+            } else {
+                holder.masachfkpm.setText("");
+            }
+
+            int maTV = list.get(position).getThanhvien();
+            thanhvien tv = this.findTenBYMaTV(maTV);
+
+            if (tv != null) {
+                holder.mathanhvienfkpm.setText(tv.getHoTen());
+            } else {
+                holder.mathanhvienfkpm.setText("");
             }
         }
     }
@@ -58,6 +77,24 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
         for (loaisach loaiSach : dao.danhsach()) {
             if (loaiSach.getId() == maLoai) {
                 return loaiSach;
+            }
+        }
+        return null;
+    }
+
+    private sach findSachByMaSach(int maSach){
+        for (sach x : dao.danhsachSach()){
+            if (x.getMasach() == maSach){
+                return x;
+            }
+        }
+        return null;
+    }
+
+    private thanhvien findTenBYMaTV(int maTV){
+        for (thanhvien tv : dao.danhsachTV()){
+            if (tv.getMatv() == maTV){
+                return tv;
             }
         }
         return null;

@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.baitap.R;
 
 public class ViewHolderSach extends RecyclerView.ViewHolder{
-    TextView tens, giathue, maloai;
+    TextView tens, giathue, maloaifksach;
     Button suas, xoas;
     public ViewHolderSach(@NonNull View itemView) {
         super(itemView);
         tens = itemView.findViewById(R.id.tensach);
         giathue = itemView.findViewById(R.id.giathue);
-        maloai = itemView.findViewById(R.id.maloai);
+        maloaifksach = itemView.findViewById(R.id.maloaifksach);
         suas = itemView.findViewById(R.id.suasach);
         xoas = itemView.findViewById(R.id.xoasach);
     }
