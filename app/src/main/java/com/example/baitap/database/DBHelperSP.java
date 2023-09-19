@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelperSP extends SQLiteOpenHelper {
     public DBHelperSP(Context context){
-        super(context, "PNLIB", null, 2);
+        super(context, "PNLib", null, 3);
     }
 
     @Override
@@ -25,8 +25,16 @@ public class DBHelperSP extends SQLiteOpenHelper {
         db.execSQL("create table thanhvien(matv Integer primary key autoincrement, hoten text not null, namsinh Integer not null)");
         db.execSQL("insert into thanhvien values(1, 'Chiến', 2004)");
 
-        db.execSQL("create table phieumuon(mapm Integer primary key autoincrement, tienthue real not null, ngay text not null, trasach text not null, matt Integer, matv Integer, masach Integer, foreign key(matt) references thuthu(matt), foreign key(matv) references thanhvien(matv), foreign key(masach) references sach(masach))");
-        db.execSQL("insert into phieumuon values(1, 20000, '10/10/2022', 'Chưa trả', 1, 1, 2)");
+        db.execSQL("CREATE TABLE phieumuon (" +
+                "mapm INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "matv INTEGER REFERENCES thanhvien(matv), " +
+                "masach INTEGER REFERENCES sach(masach), " +
+                "maloai INTEGER REFERENCES loaisach(maloai), " +
+                "tienthue REAL, " +
+                "trasach TEXT NOT NULL, " +
+                "ngay TEXT NOT NULL)");
+
+        db.execSQL("insert into phieumuon values(1, 1, 2, 2, 10000, 'chưa trả', '10/10/2023')");
     }
 
     @Override

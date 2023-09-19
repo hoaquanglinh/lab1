@@ -13,13 +13,22 @@
         android:theme="@style/Theme.Baitap"
         tools:targetApi="31">
         <activity
+            android:name=".ThemNguoiDung"
+            android:exported="false" />
+        <activity
+            android:name=".ManHinhDangNhap"
+            android:exported="false" />
+        <activity
+            android:name=".manhinhchinh"
+            android:exported="false" />
+        <activity
             android:name=".DoiMatKhau"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".manhinhchinh"
+            android:name=".ManHinhChao"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

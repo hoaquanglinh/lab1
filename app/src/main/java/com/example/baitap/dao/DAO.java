@@ -11,6 +11,7 @@ import com.example.baitap.database.DBHelperSP;
 import com.example.baitap.model.loaisach;
 import com.example.baitap.model.phieumuon;
 import com.example.baitap.model.sach;
+import com.example.baitap.model.thanhvien;
 
 import java.util.ArrayList;
 
@@ -77,12 +78,34 @@ public class DAO {
                 while (!cursor.isAfterLast()){
                     list.add(new phieumuon(
                             cursor.getInt(0),
-                            cursor.getString(1),
+                            cursor.getInt(1),
                             cursor.getInt(2),
                             cursor.getInt(3),
                             cursor.getDouble(4),
                             cursor.getString(5),
                             cursor.getString(6)
+                    ));
+                    cursor.moveToNext();
+                }
+            }
+        }catch (Exception e){
+            Log.i(TAG,"Lỗi", e);
+        }
+        return list;
+    }
+
+    public ArrayList<thanhvien> danhsachTV(){
+        ArrayList<thanhvien> list = new ArrayList<>();
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        try{
+            Cursor cursor = db.rawQuery("select * from thanhvien", null);
+            if(cursor.getCount()>0){
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()){
+                    list.add(new thanhvien(
+                            cursor.getInt(0),
+                            cursor.getString(1),
+                            cursor.getInt(2)
                     ));
                     cursor.moveToNext();
                 }

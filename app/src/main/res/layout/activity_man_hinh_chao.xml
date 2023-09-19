@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ManHinhChao"
+    android:gravity="center">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/img"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcom to PNLib"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        android:textStyle="bold"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnbatdau"
+        android:layout_marginTop="25dp"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:text="Nhấn để tiếp tục"
+        android:background="@drawable/bgr_btn_cam"/>
+</LinearLayout>

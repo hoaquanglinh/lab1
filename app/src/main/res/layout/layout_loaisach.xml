@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tenloaisach"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-        <Button
-            android:id="@+id/sualoaisach"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="15dp">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sửa"/>
-        <Button
-            android:id="@+id/xoaloaisach"
+            android:text="Tên loại sách: "
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tenloaisach"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xóa"/>
-    </LinearLayout>
+            android:textSize="24dp"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sualoaisach"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/baseline_edit_24"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/xoaloaisach"
+                android:layout_marginLeft="10dp"
+                android:layout_width="45dp"
+                android:layout_gravity="right"
+                android:layout_height="45dp"
+                android:background="@drawable/baseline_delete_24"/>
+        </LinearLayout>
 </LinearLayout>

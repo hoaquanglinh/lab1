@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="10dp">
-
     <LinearLayout
         android:layout_width="330dp"
         android:layout_height="wrap_content"
@@ -15,12 +14,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên sách: "
-                android:textSize="23dp"
+                android:text="Mã thành viên: "
+                android:textSize="19dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="#E53935"/>
             <TextView
-                android:id="@+id/tensach"
+                android:id="@+id/matv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="23dp" />
@@ -32,12 +31,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giá thuê:   "
+                android:text="Họ Tên:   "
                 android:textSize="23dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/giathue"
+                android:id="@+id/hotentv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="26dp" />
@@ -50,12 +49,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loại sách: "
+                android:text="Năm Sinh: "
                 android:textSize="23dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/maloaifksach"
+                android:id="@+id/namsinhtv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="26dp" />
@@ -66,17 +65,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/suasach"
-            android:layout_width="60dp"
+            android:id="@+id/suaTV"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@drawable/baseline_edit_24"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/xoasach"
-            android:layout_width="60dp"
+            android:id="@+id/xoaTV"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@drawable/baseline_delete_24"/>
     </LinearLayout>

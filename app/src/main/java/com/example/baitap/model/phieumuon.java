@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class phieumuon {
     int id;
-    String thanhvien;
+    int thanhvien;
     int tensach;
     int tenloai;
     Double tienthue;
@@ -14,7 +14,7 @@ public class phieumuon {
     public phieumuon() {
     }
 
-    public phieumuon(String thanhvien, int tensach, int tenloai, Double tienthue, String trangThai, String ngaythue) {
+    public phieumuon(int thanhvien, int tensach, int tenloai, Double tienthue, String trangThai, String ngaythue) {
         this.thanhvien = thanhvien;
         this.tensach = tensach;
         this.tenloai = tenloai;
@@ -23,7 +23,7 @@ public class phieumuon {
         this.ngaythue = ngaythue;
     }
 
-    public phieumuon(int id, String thanhvien, int tensach, int tenloai, Double tienthue, String trangThai, String ngaythue) {
+    public phieumuon(int id, int thanhvien, int tensach, int tenloai, Double tienthue, String trangThai, String ngaythue) {
         this.id = id;
         this.thanhvien = thanhvien;
         this.tensach = tensach;
@@ -41,11 +41,11 @@ public class phieumuon {
         this.id = id;
     }
 
-    public String getThanhvien() {
+    public int getThanhvien() {
         return thanhvien;
     }
 
-    public void setThanhvien(String thanhvien) {
+    public void setThanhvien(int thanhvien) {
         this.thanhvien = thanhvien;
     }
 

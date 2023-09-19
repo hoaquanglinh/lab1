@@ -2,64 +2,142 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/maphieu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp" />
-
-    <TextView
-        android:id="@+id/thanhvien"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Thành viên: "
-        android:textSize="26dp" />
-
-    <TextView
-        android:id="@+id/masach"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp" />
-
-    <TextView
-        android:id="@+id/maloai"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp" />
-
-    <TextView
-        android:id="@+id/tienthue"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp" />
-
-    <TextView
-        android:id="@+id/trangthai"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp" />
-
-    <TextView
-        android:id="@+id/ngaythue"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="26dp" />
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-        <Button
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã phiếu mượn:   "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#E53935"/>
+        <TextView
+            android:id="@+id/maphieu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thành viên: "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/mathanhvienfkpm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên sách: "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/masachfkpm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thể loại: "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/maloaifkpm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiền thuê: "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tienthue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái: "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/trangthai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày thuê: "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/ngaythue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/suaPhieuMuon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sửa"/>
-        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/baseline_edit_24"/>
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/xoaPhieuMuon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Xóa"/>
+            android:layout_marginLeft="30dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/baseline_delete_24"/>
     </LinearLayout>
 </LinearLayout>

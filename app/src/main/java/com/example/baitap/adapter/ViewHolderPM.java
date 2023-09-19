@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.baitap.R;
 
 public class ViewHolderPM extends RecyclerView.ViewHolder{
-    TextView maphieu, thanhvien, tensach, tienthue, trangthai, ngaythue, tenloai;
+    TextView maphieu, mathanhvienfkpm, masachfkpm, tienthue, trangthai, ngaythue, maloaifkpm;
     Button sua, xoa;
     public ViewHolderPM(@NonNull View itemView) {
         super(itemView);
         maphieu = itemView.findViewById(R.id.maphieu);
-        thanhvien = itemView.findViewById(R.id.thanhvien);
-        tensach = itemView.findViewById(R.id.masach);
+        mathanhvienfkpm = itemView.findViewById(R.id.mathanhvienfkpm);
+        masachfkpm = itemView.findViewById(R.id.masachfkpm);
         tienthue = itemView.findViewById(R.id.tienthue);
         trangthai = itemView.findViewById(R.id.trangthai);
         ngaythue = itemView.findViewById(R.id.ngaythue);
-        tenloai = itemView.findViewById(R.id.maloai);
+        maloaifkpm = itemView.findViewById(R.id.maloaifkpm);
         sua = itemView.findViewById(R.id.suaPhieuMuon);
         xoa = itemView.findViewById(R.id.xoaPhieuMuon);
     }

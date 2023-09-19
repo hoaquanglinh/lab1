@@ -45,9 +45,9 @@ public class adapterSach extends RecyclerView.Adapter<ViewHolderSach>{
             loaisach loaiSach = findLoaiSachByMaLoai(maLoai);
 
             if (loaiSach != null) {
-                holder.maloai.setText(loaiSach.getTenloai());
+                holder.maloaifksach.setText(loaiSach.getTenloai());
             } else {
-                holder.maloai.setText("");
+                holder.maloaifksach.setText("");
             }
         }
     }
