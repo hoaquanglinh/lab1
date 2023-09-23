@@ -41,13 +41,14 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
     public void onBindViewHolder(@NonNull ViewHolderPM holder, int position) {
         if (position < list.size()) {
             holder.maphieu.setText(String.valueOf(list.get(position).getId()));
-            int maTT = list.get(position).getTentt();
-            thuthu thuthu = this.findThuThubyMaTT(maTT);
 
-            if (thuthu != null) {
-                holder.mattfkpm.setText(thuthu.getHoTenTT());
+            String maTT = String.valueOf(list.get(position).getTentt());
+            thuthu tt = this.findThuThubyMaTT(maTT);
+
+            if (tt != null) {
+                holder.mattfkpm.setText(tt.getHoTenTT());
             } else {
-                holder.mattfkpm.setText("");
+                holder.mattfkpm.setText("Không có");
             }
 
             int maTV = list.get(position).getThanhvien();
@@ -73,10 +74,10 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
         }
     }
 
-    private thuthu findThuThubyMaTT(int matt) {
-        for (thuthu thuthu : dao.danhsachTT()) {
-            if (thuthu.getMaTT() == matt) {
-                return thuthu;
+    private thuthu findThuThubyMaTT(String matt) {
+        for (thuthu x : dao.danhsachTT()) {
+            if (x.getMaTT().equalsIgnoreCase(matt)) {
+                return x;
             }
         }
         return null;

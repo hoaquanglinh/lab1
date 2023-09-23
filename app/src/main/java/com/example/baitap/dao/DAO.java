@@ -2,10 +2,12 @@ package com.example.baitap.dao;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.baitap.database.DBHelperSP;
 import com.example.baitap.model.loaisach;
@@ -24,6 +26,8 @@ public class DAO {
         this.context = context;
         this.dbHelperSP = dbHelperSP;
     }
+
+    // Loại sách
 
     public ArrayList<loaisach> danhsach(){
         ArrayList<loaisach> list = new ArrayList<>();
@@ -46,6 +50,51 @@ public class DAO {
         return list;
     }
 
+    public void themLS(loaisach ls){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("maloai", ls.getId());
+        values.put("tenloai", ls.getTenloai());
+
+        long check = db.insert("loaisach", null, values);
+
+        if (check > 0)
+            Toast.makeText(context, "Thêm thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Thêm thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void suaLS(loaisach ls){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("maloai", ls.getId());
+        values.put("tenloai", ls.getTenloai());
+
+        long check = db.update("loaisach", values, "maloai =?", new String[]{String.valueOf(ls.getId())});
+
+        if (check > 0)
+            Toast.makeText(context, "Sửa thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Sửa thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void xoaLS(int maloai){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        long check = db.delete("loaisach", "maloai = ?", new String[]{String.valueOf(maloai)});
+
+        if (check > 0){
+            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public ArrayList<thuthu> danhsachTT(){
         ArrayList<thuthu> list = new ArrayList<>();
         SQLiteDatabase db = dbHelperSP.getWritableDatabase();
@@ -55,7 +104,7 @@ public class DAO {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()){
                     list.add(new thuthu(
-                            cursor.getInt(0),
+                            cursor.getString(0),
                             cursor.getString(1),
                             cursor.getString(2)
                     ));
@@ -101,7 +150,7 @@ public class DAO {
                 while (!cursor.isAfterLast()){
                     list.add(new phieumuon(
                             cursor.getInt(0),
-                            cursor.getInt(1),
+                            cursor.getString(1),
                             cursor.getInt(2),
                             cursor.getInt(3),
                             cursor.getDouble(4),

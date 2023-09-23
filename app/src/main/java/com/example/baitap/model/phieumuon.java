@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class phieumuon {
     int id;
-    int tentt;
+    String tentt;
     int thanhvien;
     int tensach;
     Double tienthue;
@@ -14,7 +14,7 @@ public class phieumuon {
     public phieumuon() {
     }
 
-    public phieumuon(int tentt, int thanhvien, int tensach, Double tienthue, String trangThai, String ngaythue) {
+    public phieumuon(String tentt, int thanhvien, int tensach, Double tienthue, String trangThai, String ngaythue) {
         this.tentt = tentt;
         this.thanhvien = thanhvien;
         this.tensach = tensach;
@@ -23,7 +23,7 @@ public class phieumuon {
         this.ngaythue = ngaythue;
     }
 
-    public phieumuon(int id, int tentt, int thanhvien, int tensach, Double tienthue, String trangThai, String ngaythue) {
+    public phieumuon(int id, String tentt, int thanhvien, int tensach, Double tienthue, String trangThai, String ngaythue) {
         this.id = id;
         this.tentt = tentt;
         this.thanhvien = thanhvien;
@@ -41,6 +41,14 @@ public class phieumuon {
         this.id = id;
     }
 
+    public String getTentt() {
+        return tentt;
+    }
+
+    public void setTentt(String tentt) {
+        this.tentt = tentt;
+    }
+
     public int getThanhvien() {
         return thanhvien;
     }
@@ -55,14 +63,6 @@ public class phieumuon {
 
     public void setTensach(int tensach) {
         this.tensach = tensach;
-    }
-
-    public int getTentt() {
-        return tentt;
-    }
-
-    public void setTentt(int tentt) {
-        this.tentt = tentt;
     }
 
     public Double getTienthue() {
