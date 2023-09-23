@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class phieumuon {
     int id;
+    int tentt;
     int thanhvien;
     int tensach;
-    int tenloai;
     Double tienthue;
     String trangThai;
     String ngaythue;
@@ -14,20 +14,20 @@ public class phieumuon {
     public phieumuon() {
     }
 
-    public phieumuon(int thanhvien, int tensach, int tenloai, Double tienthue, String trangThai, String ngaythue) {
+    public phieumuon(int tentt, int thanhvien, int tensach, Double tienthue, String trangThai, String ngaythue) {
+        this.tentt = tentt;
         this.thanhvien = thanhvien;
         this.tensach = tensach;
-        this.tenloai = tenloai;
         this.tienthue = tienthue;
         this.trangThai = trangThai;
         this.ngaythue = ngaythue;
     }
 
-    public phieumuon(int id, int thanhvien, int tensach, int tenloai, Double tienthue, String trangThai, String ngaythue) {
+    public phieumuon(int id, int tentt, int thanhvien, int tensach, Double tienthue, String trangThai, String ngaythue) {
         this.id = id;
+        this.tentt = tentt;
         this.thanhvien = thanhvien;
         this.tensach = tensach;
-        this.tenloai = tenloai;
         this.tienthue = tienthue;
         this.trangThai = trangThai;
         this.ngaythue = ngaythue;
@@ -57,12 +57,12 @@ public class phieumuon {
         this.tensach = tensach;
     }
 
-    public int getTenloai() {
-        return tenloai;
+    public int getTentt() {
+        return tentt;
     }
 
-    public void setTenloai(int tenloai) {
-        this.tenloai = tenloai;
+    public void setTentt(int tentt) {
+        this.tentt = tentt;
     }
 
     public Double getTienthue() {

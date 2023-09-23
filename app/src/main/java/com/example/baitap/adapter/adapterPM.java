@@ -15,6 +15,7 @@ import com.example.baitap.model.loaisach;
 import com.example.baitap.model.phieumuon;
 import com.example.baitap.model.sach;
 import com.example.baitap.model.thanhvien;
+import com.example.baitap.model.thuthu;
 
 import java.util.ArrayList;
 
@@ -40,26 +41,13 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
     public void onBindViewHolder(@NonNull ViewHolderPM holder, int position) {
         if (position < list.size()) {
             holder.maphieu.setText(String.valueOf(list.get(position).getId()));
-            holder.ngaythue.setText(list.get(position).getNgaythue());
-            holder.trangthai.setText(list.get(position).getTrangThai());
-            holder.tienthue.setText(String.valueOf(list.get(position).getTienthue()));
+            int maTT = list.get(position).getTentt();
+            thuthu thuthu = this.findThuThubyMaTT(maTT);
 
-            int maLoai = list.get(position).getTenloai();
-            loaisach loaiSach = this.findLoaiSachByMaLoai(maLoai);
-
-            if (loaiSach != null) {
-                holder.maloaifkpm.setText(loaiSach.getTenloai());
+            if (thuthu != null) {
+                holder.mattfkpm.setText(thuthu.getHoTenTT());
             } else {
-                holder.maloaifkpm.setText("");
-            }
-
-            int maSach = list.get(position).getTensach();
-            sach sach = this.findSachByMaSach(maSach);
-
-            if (sach != null) {
-                holder.masachfkpm.setText(sach.getTensach());
-            } else {
-                holder.masachfkpm.setText("");
+                holder.mattfkpm.setText("");
             }
 
             int maTV = list.get(position).getThanhvien();
@@ -70,22 +58,25 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
             } else {
                 holder.mathanhvienfkpm.setText("");
             }
-        }
-    }
 
-    private loaisach findLoaiSachByMaLoai(int maLoai) {
-        for (loaisach loaiSach : dao.danhsach()) {
-            if (loaiSach.getId() == maLoai) {
-                return loaiSach;
+            int maSach = list.get(position).getTensach();
+            sach sach = this.findSachByMaSach(maSach);
+
+            if (sach != null) {
+                holder.masachfkpm.setText(sach.getTensach());
+            } else {
+                holder.masachfkpm.setText("");
             }
+            holder.tienthue.setText(String.valueOf(list.get(position).getTienthue()));
+            holder.trangthai.setText(list.get(position).getTrangThai());
+            holder.ngaythue.setText(list.get(position).getNgaythue());
         }
-        return null;
     }
 
-    private sach findSachByMaSach(int maSach){
-        for (sach x : dao.danhsachSach()){
-            if (x.getMasach() == maSach){
-                return x;
+    private thuthu findThuThubyMaTT(int matt) {
+        for (thuthu thuthu : dao.danhsachTT()) {
+            if (thuthu.getMaTT() == matt) {
+                return thuthu;
             }
         }
         return null;
@@ -95,6 +86,15 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
         for (thanhvien tv : dao.danhsachTV()){
             if (tv.getMatv() == maTV){
                 return tv;
+            }
+        }
+        return null;
+    }
+
+    private sach findSachByMaSach(int maSach){
+        for (sach x : dao.danhsachSach()){
+            if (x.getMasach() == maSach){
+                return x;
             }
         }
         return null;

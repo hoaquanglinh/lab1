@@ -12,6 +12,7 @@ import com.example.baitap.model.loaisach;
 import com.example.baitap.model.phieumuon;
 import com.example.baitap.model.sach;
 import com.example.baitap.model.thanhvien;
+import com.example.baitap.model.thuthu;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,28 @@ public class DAO {
                     list.add(new loaisach(
                             cursor.getInt(0),
                             cursor.getString(1)
+                    ));
+                    cursor.moveToNext();
+                }
+            }
+        }catch (Exception e){
+            Log.i(TAG,"Lỗi", e);
+        }
+        return list;
+    }
+
+    public ArrayList<thuthu> danhsachTT(){
+        ArrayList<thuthu> list = new ArrayList<>();
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        try{
+            Cursor cursor = db.rawQuery("select * from thuthu", null);
+            if(cursor.getCount()>0){
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()){
+                    list.add(new thuthu(
+                            cursor.getInt(0),
+                            cursor.getString(1),
+                            cursor.getString(2)
                     ));
                     cursor.moveToNext();
                 }

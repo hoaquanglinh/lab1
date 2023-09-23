@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.baitap.R;
 
 public class ViewHolderPM extends RecyclerView.ViewHolder{
-    TextView maphieu, mathanhvienfkpm, masachfkpm, tienthue, trangthai, ngaythue, maloaifkpm;
+    TextView maphieu, mathanhvienfkpm, masachfkpm, tienthue, trangthai, ngaythue, mattfkpm;
     Button sua, xoa;
     public ViewHolderPM(@NonNull View itemView) {
         super(itemView);
@@ -20,7 +20,7 @@ public class ViewHolderPM extends RecyclerView.ViewHolder{
         tienthue = itemView.findViewById(R.id.tienthue);
         trangthai = itemView.findViewById(R.id.trangthai);
         ngaythue = itemView.findViewById(R.id.ngaythue);
-        maloaifkpm = itemView.findViewById(R.id.maloaifkpm);
+        mattfkpm = itemView.findViewById(R.id.mattfkpm);
         sua = itemView.findViewById(R.id.suaPhieuMuon);
         xoa = itemView.findViewById(R.id.xoaPhieuMuon);
     }
