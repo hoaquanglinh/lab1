@@ -22,16 +22,16 @@ public class manhinhchinh extends AppCompatActivity {
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.navigationView);
 
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
-//                manhinhchinh.this, drawerLayout, toolbar,
-//                R.string.open,
-//                R.string.close);
-//        drawerToggle.setDrawerIndicatorEnabled(true);
-//        drawerToggle.syncState();
-//        drawerLayout.addDrawerListener(drawerToggle);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+                manhinhchinh.this, drawerLayout, toolbar,
+                R.string.open,
+                R.string.close);
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerToggle.syncState();
+        drawerLayout.addDrawerListener(drawerToggle);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

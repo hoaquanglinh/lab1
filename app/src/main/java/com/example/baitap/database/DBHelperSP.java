@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelperSP extends SQLiteOpenHelper {
     public DBHelperSP(Context context){
-        super(context, "pn28", null, 1);
+        super(context, "pn29", null, 1);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class DBHelperSP extends SQLiteOpenHelper {
         db.execSQL("create table thuthu(matt text primary key, hotentt text not null, matkhau text not null)");
         db.execSQL("insert into thuthu values('PH43159', 'Linh', '123')");
 
-        db.execSQL("create table thanhvien(matv Integer primary key autoincrement, hotenv text not null, namsinh Integer not null)");
+        db.execSQL("create table thanhvien(matv Integer primary key autoincrement, hotentv text not null, namsinh Integer not null)");
         db.execSQL("insert into thanhvien values(1, 'Chiến', 2004), (2, 'Phúc', 2004)");
 
         db.execSQL("CREATE TABLE phieumuon (" +

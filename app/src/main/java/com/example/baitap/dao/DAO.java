@@ -54,7 +54,6 @@ public class DAO {
         SQLiteDatabase db = dbHelperSP.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("maloai", ls.getId());
         values.put("tenloai", ls.getTenloai());
 
         long check = db.insert("loaisach", null, values);
@@ -70,7 +69,6 @@ public class DAO {
         SQLiteDatabase db = dbHelperSP.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("maloai", ls.getId());
         values.put("tenloai", ls.getTenloai());
 
         long check = db.update("loaisach", values, "maloai =?", new String[]{String.valueOf(ls.getId())});
@@ -166,6 +164,7 @@ public class DAO {
         return list;
     }
 
+    // THÀNH VIÊN //
     public ArrayList<thanhvien> danhsachTV(){
         ArrayList<thanhvien> list = new ArrayList<>();
         SQLiteDatabase db = dbHelperSP.getWritableDatabase();
@@ -186,5 +185,22 @@ public class DAO {
             Log.i(TAG,"Lỗi", e);
         }
         return list;
+    }
+
+    public void themTV(thanhvien tv){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("matv", tv.getMatv());
+        values.put("hotentv", tv.getHoTen());
+        values.put("namsinh", tv.getNamSinh());
+
+        long check = db.insert("thanhvien", null, values);
+
+        if (check > 0)
+            Toast.makeText(context, "Thêm thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Thêm thất bại",
+                Toast.LENGTH_SHORT).show();
     }
 }
