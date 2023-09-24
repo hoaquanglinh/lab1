@@ -96,17 +96,14 @@ public class adapterLoaiSach extends RecyclerView.Adapter<ViewHolder> {
         Dialog dialog = builder.create();
         dialog.show();
 
-        EditText udmaloai = convertView.findViewById(R.id.udmaloai);
         EditText udtenloai = convertView.findViewById(R.id.udtenloai);
 
-        udmaloai.setText(String.valueOf(ls.getId()));
         udtenloai.setText(ls.getTenloai());
 
         convertView.findViewById(R.id.btnupdateLS).setOnClickListener(v -> {
-            int maloai = Integer.parseInt(udmaloai.getText().toString());
             String tenloai = udtenloai.getText().toString();
 
-            loaisach sp1 = new loaisach(maloai, tenloai);
+            loaisach sp1 = new loaisach(ls.getId(), tenloai);
 
             dao.suaLS(sp1);
             list.clear();

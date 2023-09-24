@@ -42,14 +42,7 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
         if (position < list.size()) {
             holder.maphieu.setText(String.valueOf(list.get(position).getId()));
 
-            String maTT = String.valueOf(list.get(position).getTentt());
-            thuthu tt = this.findThuThubyMaTT(maTT);
-
-            if (tt != null) {
-                holder.mattfkpm.setText(tt.getHoTenTT());
-            } else {
-                holder.mattfkpm.setText("Không có");
-            }
+            holder.mattfkpm.setText(list.get(position).getTentt());
 
             int maTV = list.get(position).getThanhvien();
             thanhvien tv = this.findTenBYMaTV(maTV);
@@ -74,14 +67,14 @@ public class adapterPM extends RecyclerView.Adapter<ViewHolderPM>{
         }
     }
 
-    private thuthu findThuThubyMaTT(String matt) {
-        for (thuthu x : dao.danhsachTT()) {
-            if (x.getMaTT().equalsIgnoreCase(matt)) {
-                return x;
-            }
-        }
-        return null;
-    }
+//    private thuthu findThuThubyMaTT(String matt) {
+//        for (thuthu x : dao.danhsachTT()) {
+//            if (x.getMaTT().equalsIgnoreCase(matt)) {
+//                return x;
+//            }
+//        }
+//        return null;
+//    }
 
     private thanhvien findTenBYMaTV(int maTV){
         for (thanhvien tv : dao.danhsachTV()){

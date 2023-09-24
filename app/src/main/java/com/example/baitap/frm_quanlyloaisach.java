@@ -64,14 +64,16 @@ public class frm_quanlyloaisach extends Fragment {
         Dialog dialog = builder.create();
         dialog.show();
 
+        EditText addmaLS = convertView.findViewById(R.id.addmaloai);
         EditText addtenLS = convertView.findViewById(R.id.addtenloai);
 
         convertView.findViewById(R.id.btnaddLS).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int mals = Integer.parseInt(addmaLS.getText().toString());
                 String tenls = addtenLS.getText().toString();
 
-                loaisach ls = new loaisach(tenls);
+                loaisach ls = new loaisach(mals, tenls);
 
                 dao.themLS(ls);
                 list.clear();

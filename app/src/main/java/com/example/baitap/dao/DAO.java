@@ -16,18 +16,22 @@ import com.example.baitap.model.sach;
 import com.example.baitap.model.thanhvien;
 import com.example.baitap.model.thuthu;
 
+import java.sql.ClientInfoStatus;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class DAO {
     Context context;
     DBHelperSP dbHelperSP;
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
     public DAO(Context context, DBHelperSP dbHelperSP) {
         this.context = context;
         this.dbHelperSP = dbHelperSP;
     }
 
-    // Loại sách
+    // ///////////////////////////////////////// Loại sách  //////////////////////////////////////////////// //
 
     public ArrayList<loaisach> danhsach(){
         ArrayList<loaisach> list = new ArrayList<>();
@@ -58,11 +62,13 @@ public class DAO {
 
         long check = db.insert("loaisach", null, values);
 
-        if (check > 0)
+        if (check > 0) {
             Toast.makeText(context, "Thêm thành công",
                     Toast.LENGTH_SHORT).show();
-        else Toast.makeText(context, "Thêm thất bại",
-                Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Thêm thất bại",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void suaLS(loaisach ls){
@@ -93,6 +99,8 @@ public class DAO {
         }
     }
 
+    // ///////////////////////////////////////// THỦ THƯ  //////////////////////////////////////////////// //
+
     public ArrayList<thuthu> danhsachTT(){
         ArrayList<thuthu> list = new ArrayList<>();
         SQLiteDatabase db = dbHelperSP.getWritableDatabase();
@@ -114,6 +122,55 @@ public class DAO {
         }
         return list;
     }
+
+    public void themThuThu(thuthu tt){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("matt", tt.getMaTT());
+        values.put("hotentt", tt.getHoTenTT());
+        values.put("matkhau", tt.getMatKhau());
+
+        long check = db.insert("thuthu", null, values);
+
+        if (check > 0)
+            Toast.makeText(context, "Thêm thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Thêm thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void suaThuThu(thuthu tt){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("matt", tt.getMaTT());
+        values.put("hotentt", tt.getHoTenTT());
+        values.put("matkhau", tt.getMatKhau());
+
+        long check = db.update("thuthu", values, "matt =?", new String[]{String.valueOf(tt.getMaTT())});
+
+        if (check > 0)
+            Toast.makeText(context, "Sửa thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Sửa thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void xoaThuThu(int matt){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        long check = db.delete("thuthu", "matt = ?", new String[]{String.valueOf(matt)});
+
+        if (check > 0){
+            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // ///////////////////////////////////////// SÁCH  //////////////////////////////////////////////// //
 
     public ArrayList<sach> danhsachSach(){
         ArrayList<sach> list = new ArrayList<>();
@@ -137,6 +194,57 @@ public class DAO {
         }
         return list;
     }
+
+    public void themSach(sach sach){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("masach", sach.getMasach());
+        values.put("tensach", sach.getTensach());
+        values.put("giathue", sach.getGiaThue());
+        values.put("maloai", sach.getMaloai());
+
+        long check = db.insert("sach", null, values);
+
+        if (check > 0)
+            Toast.makeText(context, "Thêm thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Thêm thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void suaSach(sach sach){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("tensach", sach.getTensach());
+        values.put("giathue", sach.getGiaThue());
+        values.put("maloai", sach.getMaloai());
+
+        long check = db.update("sach", values, "masach =?", new String[]{String.valueOf(sach.getMaloai())});
+
+        if (check > 0)
+            Toast.makeText(context, "Sửa thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Sửa thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void xoaSach(int masach){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        long check = db.delete("sach", "masach = ?", new String[]{String.valueOf(masach)});
+
+        if (check > 0){
+            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    // ///////////////////////////////////////// PHIẾU MƯỢN //////////////////////////////////////////////// //
 
     public ArrayList<phieumuon> danhsachPhieuMuon(){
         ArrayList<phieumuon> list = new ArrayList<>();
@@ -164,7 +272,64 @@ public class DAO {
         return list;
     }
 
-    // THÀNH VIÊN //
+    public void themPM(phieumuon pm){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("matt", pm.getTentt());
+        values.put("matv", pm.getThanhvien());
+        values.put("masach", pm.getTensach());
+        values.put("tienthue", pm.getTienthue());
+        values.put("trasach", pm.getTrangThai());
+        values.put("ngay", sdf.format(pm.getNgaythue()));
+
+        long check = db.insert("phieumuon", null, values);
+
+        if (check > 0) {
+            Toast.makeText(context, "Thêm thành công",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Thêm thất bại",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void suaPM(phieumuon pm){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("matt", pm.getTentt());
+        values.put("matv", pm.getThanhvien());
+        values.put("masach", pm.getTensach());
+        values.put("tienthue", pm.getTienthue());
+        values.put("trasach", pm.getTrangThai());
+        values.put("ngay", sdf.format(pm.getNgaythue()));
+
+        long check = db.update("phieumuon", values, "mapm =?", new String[]{String.valueOf(pm.getId())});
+
+        if (check > 0) {
+            Toast.makeText(context, "Sửa thành công",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Sửa thất bại",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void xoaPM(int mapm){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        long check = db.delete("phieumuon", "mapm = ?", new String[]{String.valueOf(mapm)});
+
+        if (check > 0){
+            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // ///////////////////////////////////////// THÀNH VIÊN  //////////////////////////////////////////////// //
     public ArrayList<thanhvien> danhsachTV(){
         ArrayList<thanhvien> list = new ArrayList<>();
         SQLiteDatabase db = dbHelperSP.getWritableDatabase();
@@ -203,4 +368,34 @@ public class DAO {
         else Toast.makeText(context, "Thêm thất bại",
                 Toast.LENGTH_SHORT).show();
     }
+
+    public void suaTV(thanhvien tv){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("hotentv", tv.getHoTen());
+        values.put("namsinh", tv.getNamSinh());
+
+        long check = db.update("thanhvien", values, "matv =?", new String[]{String.valueOf(tv.getMatv())});
+
+        if (check > 0)
+            Toast.makeText(context, "Sửa thành công",
+                    Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Sửa thất bại",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void xoaTV(int matv){
+        SQLiteDatabase db = dbHelperSP.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        long check = db.delete("thanhvien", "matv = ?", new String[]{String.valueOf(matv)});
+
+        if (check > 0){
+            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

@@ -1,14 +1,17 @@
 package com.example.baitap.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.baitap.model.thuthu;
+
 public class DBHelperSP extends SQLiteOpenHelper {
     public DBHelperSP(Context context){
-        super(context, "pn29", null, 1);
+        super(context, "pn35", null, 1);
     }
 
     @Override
@@ -16,7 +19,7 @@ public class DBHelperSP extends SQLiteOpenHelper {
         db.execSQL("create table loaisach(maloai Integer primary key autoincrement, tenloai text not null)");
         db.execSQL("insert into loaisach values(1, 'CNTT'), (2, 'TKDH')");
 
-        db.execSQL("create table sach(masach Integer primary key autoincrement, tensach text not null, giathue real not null, maloai Integer, foreign key(maloai) references loaisach(maloai))");
+        db.execSQL("create table sach(masach Integer primary key autoincrement, tensach text not null, giathue real not null, maloai INTEGER REFERENCES loaisach(maloai))");
         db.execSQL("insert into sach values(1, 'Java', 10000, 1), (2, 'Vẽ', 3000, 1)");
 
         db.execSQL("create table thuthu(matt text primary key, hotentt text not null, matkhau text not null)");
@@ -35,6 +38,27 @@ public class DBHelperSP extends SQLiteOpenHelper {
                 "ngay date)");
 
         db.execSQL("insert into phieumuon values(1, 'PH43159', 2, 1, 10000, 'đã trả', '10/10/2023')");
+    }
+
+    public thuthu getUser(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("thuthu", null, "matt=? AND matkhau=?", new String[]{username, password}, null, null, null);
+        thuthu user = null;
+
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                user = new thuthu(
+                        cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2)
+                );
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        db.close();
+        return user;
     }
 
     @Override

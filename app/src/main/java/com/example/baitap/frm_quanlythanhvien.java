@@ -53,7 +53,8 @@ public class frm_quanlythanhvien extends Fragment {
         fac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                thanhvien tv = new thanhvien();
+                addthanhvien(tv);
             }
         });
         return view;

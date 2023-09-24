@@ -19,7 +19,7 @@
             android:name=".ManHinhDangNhap"
             android:exported="false" />
         <activity
-            android:name=".ManHinhChao"
+            android:name=".manhinhchinh"
             android:exported="false" />
         <activity
             android:name=".DoiMatKhau"
@@ -28,7 +28,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".manhinhchinh"
+            android:name=".ManHinhChao"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
